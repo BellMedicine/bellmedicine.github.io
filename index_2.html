@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}Buy{% endblock %}
+
+
+{% block main %}
+
+    <div>
+        <table class="table">
+         <thead>
+           <tr>
+             <th scope="col">Symbol</th>
+             <th scope="col">Name</th>
+             <th scope="col">Shares</th>
+             <th scope="col">Current Price</th>
+             <th scope="col">Current Value</th>
+           </tr>
+         </thead>
+         <tbody>
+            {% for stock in stocks %}
+                {% if stock_portfolio[stock]['quantity'] > 0  %}
+                    <tr>
+                        <th scope="row">{{ stock }}</th>
+                        <td>{{ stock_portfolio[stock]['stock_name'] }}</td>
+                        <td>{{ stock_portfolio[stock]['quantity'] }}</td>
+                        <td>{{ stock_portfolio[stock]['current_price'] }}</td>
+                        <td>{{ stock_portfolio[stock]['current_value'] }}</td>
+                   </tr>
+                 {% endif %}
+            {% endfor %}
+            <tr>
+                <th scope="row"> CASH </th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ cash }}</td>
+            </tr>
+            <tr>
+                <th scope="row"> TOTAL ASSETS </th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ total_assets + cash }}</td>
+            </tr>
+         </tbody>
+        </table>
+    </div>
+{% endblock %}
