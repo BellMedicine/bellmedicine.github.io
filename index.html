@@ -1,20 +1,48 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Hello</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-</head>
+{% block title %}Buy{% endblock %}
 
-<body>
 
-  Hello World!
+{% block main %}
 
-  This was not that hard after all
-  <div>
-    I added Bootstrap style
-  </div>
-  Chage made to master branch! That is exciting.
-
-  <a href="cv.html">CV</a>
-</body>
+    <div>
+        <table class="table">
+         <thead>
+           <tr>
+             <th scope="col">Symbol</th>
+             <th scope="col">Name</th>
+             <th scope="col">Shares</th>
+             <th scope="col">Current Price</th>
+             <th scope="col">Current Value</th>
+           </tr>
+         </thead>
+         <tbody>
+            {% for stock in stocks %}
+                {% if stock_portfolio[stock]['quantity'] > 0  %}
+                    <tr>
+                        <th scope="row">{{ stock }}</th>
+                        <td>{{ stock_portfolio[stock]['stock_name'] }}</td>
+                        <td>{{ stock_portfolio[stock]['quantity'] }}</td>
+                        <td>{{ stock_portfolio[stock]['current_price'] }}</td>
+                        <td>{{ stock_portfolio[stock]['current_value'] }}</td>
+                   </tr>
+                 {% endif %}
+            {% endfor %}
+            <tr>
+                <th scope="row"> CASH </th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ cash }}</td>
+            </tr>
+            <tr>
+                <th scope="row"> TOTAL ASSETS </th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ total_assets + cash }}</td>
+            </tr>
+         </tbody>
+        </table>
+    </div>
+{% endblock %}
