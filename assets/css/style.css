@@ -19,7 +19,7 @@ a {
 }
 
 a:hover {
-  color: #63adf2;
+  color: #46ac3d;
   text-decoration: none;
 }
 
@@ -1235,8 +1235,8 @@ section {
 }
 
 .portfolio-details .portfolio-details-slider img {
-  max-width: 450;
-  max-height: 450;
+  max-width: 250;
+  max-height: 250;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination {
